@@ -1,0 +1,74 @@
+<form id="create">
+    <div>
+        姓名：
+        <input type="text" name="name">
+    </div>
+    <div>
+        專業：
+        <select name="type">
+            <option value="文科">文科</option>
+            <option value="理科">理科</option>
+            <option value="體育">體育</option>
+        </select>
+    </div>
+    <div>
+        <button type="submit">建立使用者</button>
+    </div>
+</form>
+
+<script>
+  init();
+
+  /**
+   * 初始化
+   * */
+  function init() {
+    const form = document.getElementById('create');
+
+    form.addEventListener('submit', e => {
+      e.preventDefault();
+
+      const name = document.querySelector('[name=name]').value;
+      const type = document.querySelector('[name=type]').value;
+
+      const student = factory(name, type);
+      form.reset();
+
+      console.log('student:', student);
+    });
+  }
+
+  class Student {
+    constructor(name, subjects) {
+      this.name = name;
+      // ...
+
+      // 如果是文科生：['政治', '歷史', '地理']
+      // 如果是理科生：['數學', '物理', '化學']
+      this.subjects = subjects;
+    }
+  }
+
+  /**
+   * 建立學生
+   * @param {string} name 姓名
+   * @param {string} type 文科還是理科
+   * @return {Student}
+   */
+  function factory(name, type) {
+
+    switch (type) {
+      case '文科':
+        return new Student(name, ['政治', '歷史', '地理'])
+        break;
+      case '理科':
+        return new Student(name, ['數學', '物理', '化學'])
+        break;
+      case '體育':
+        return new Student(name, ['長跑', '...'])
+        break;
+      default:
+        throw '沒有這個專業';
+    }
+  }
+</script>

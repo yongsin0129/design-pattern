@@ -1,0 +1,131 @@
+<div>
+  <div>採購餘額：<span id="balance">100</span>元</div>
+  <div class="page a">
+    部門A：
+    <input type="number" />
+    <button class="add">+</button>
+    <button class="sub">-</button>
+  </div>
+  <div class="page b">
+    部門B：
+    <input type="number" />
+    <button class="add">+</button>
+    <button class="sub">-</button>
+  </div>
+  <div class="page c">
+    部門C：
+    <input type="number" />
+    <button class="add">+</button>
+    <button class="sub">-</button>
+  </div>
+</div>
+
+<script>
+  // 顯示餘額的元素
+  const elBalance = document.getElementById('balance')
+
+  init()
+
+  /**
+   * 初始化
+   */
+  function init() {
+    const a = new Division('.page.a')
+    const b = new Division('.page.b')
+    const c = new Division('.page.c')
+  }
+
+  /**
+   * 刷新餘額
+   */
+  function renderBalance() {
+    const resource = new Resource()
+
+    elBalance.innerText = resource.balance
+  }
+
+  /**
+   * 部門構造器
+   * @param {string} selector 部門對應的選擇器
+   * @constructor
+   */
+  function Division(selector) {
+    const resource = new Resource()
+
+    // 選中必要的元素
+    this.el = document.querySelector(selector)
+    this.elAdd = this.el.querySelector('.add')
+    this.elSub = this.el.querySelector('.sub')
+    this.elInput = this.el.querySelector('input')
+
+    // 快取外部的this，用於稍後的事件回呼函數內
+    const me = this
+
+    // 監聽點選事件
+    this.elAdd.addEventListener('click', function () {
+      // 快取input，方便後面呼叫
+      const i = me.elInput
+
+      // 執行充值
+      resource.add(i.value)
+
+      // 情況input
+      i.value = ''
+
+      // 刷新餘額
+      renderBalance()
+    })
+
+    this.elSub.addEventListener('click', function () {
+      const i = me.elInput
+      resource.sub(i.value)
+      i.value = ''
+
+      renderBalance()
+    })
+  }
+
+  /**
+   * 總務處資源（其中包括預算餘額）
+   * @return {*}
+   * @constructor
+   */
+  function Resource() {
+    // 如果不是第一次new（instance肯定是存在的）
+    if (Resource.instance) return Resource.instance
+    else {
+      // 否則（instance不存在）
+      // 組裝新對象
+      this.balance = 100
+
+      // 將其存到Resource機器上
+      Resource.instance = this
+    }
+  }
+
+  /**
+   * 充值
+   * @param num
+   */
+  Resource.prototype.add = function (num) {
+    this.change(num)
+  }
+
+  /**
+   * 消費
+   * @param num
+   */
+  Resource.prototype.sub = function (num) {
+    this.change(-num)
+  }
+
+  /**
+   * 修改餘額（通過加減數字）
+   * @param {number} num
+   */
+  Resource.prototype.change = function (num) {
+    if (!num) return
+
+    this.balance += parseFloat(num)
+  }
+</script>
