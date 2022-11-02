@@ -38,8 +38,8 @@ class Student {
   }
 }
 
-var whh = new Student('王花花', '男', 89)
-var lsd = new Student('李拴蛋', '女', 40)
+const whh = new Student('王花花', '男', 89)
+const lsd = new Student('李拴蛋', '女', 40)
 
 whh.score = 100
 console.log(whh.name, whh.sumScore()) // 王花花 200
