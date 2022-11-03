@@ -1,0 +1,53 @@
+form label,
+form input {
+  display: block;
+  width: 100%;
+  margin: 0.3rem 0;
+}
+
+form label {
+  margin-bottom: 1rem;
+}
+
+main {
+  max-width: 30rem;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 10px;
+}
+
+button[type='submit'] {
+  width: 100%;
+  color: #fff;
+  background: #7326d1;
+}
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+table > * {
+  text-align: left;
+}
+
+table th,
+table td {
+  padding: 0.6rem;
+}
+
+table thead {
+  border-bottom: 3px solid rgba(0, 0, 0, 0.1);
+}
+
+table td {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+table tr:last-of-type td {
+  border: 0;
+}
+
+tbody tr:hover {
+  background: #f4ebff;
+}
