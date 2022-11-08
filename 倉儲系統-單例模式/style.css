@@ -1,0 +1,104 @@
+* {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+:root {
+  font-family: sans-serif;
+  color: #444;
+  font-size: 15px;
+  background: #ccc;
+}
+
+img {
+  max-width: 100%;
+}
+
+body {
+  margin: 0;
+}
+
+input,
+button {
+  padding: 0.6rem;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  outline: 0;
+  font-size: 0.8rem;
+}
+
+input:focus,
+button:focus {
+  outline: 2px solid #cfa8ff;
+}
+
+form label,
+form input {
+  display: block;
+  width: 100%;
+  margin: 0.3rem 0;
+}
+
+main {
+  max-width: 50em;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 1em;
+}
+
+dt,
+dd {
+  display: inline-block;
+}
+
+dt {
+  color: #0006;
+}
+
+dd {
+  margin-left: 1em;
+  font-weight: bold;
+}
+
+[hidden] {
+  display: none !important;
+}
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  margin-left: -0.3em;
+  margin-right: -0.3em;
+}
+
+.even {
+  flex: 1;
+  padding: 0.3em;
+}
+
+.half {
+  width: 50%;
+  padding: 0.3em;
+}
+
+.card {
+  padding: 0.5em 1em;
+  -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+  -moz-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+  background: #fff;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+}
+
+.card .title {
+  font-weight: bold;
+  margin: 0.5em 0;
+}
+
+.dollar:before {
+  content: '$ ';
+  color: #0008;
+  font-weight: lighter;
+}
